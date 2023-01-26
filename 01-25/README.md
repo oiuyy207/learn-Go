@@ -21,5 +21,15 @@ func main() {
 때문에 어떤 모듈을 불러오고 그 안의 함수를 불러올 때, 첫글자가 대문자이다.  
 만약 소문자로 시작하게 되면 private 함수로 인식하여 불러올 수 없다.
 ## 3. 모듈을 만들땐, 폴더를 만들고 그 안에 .go 파일을 만들어라
-이후 `go mod init [모듈경로; github.com/oiuyy207/learn-Go/01-25/myModule]`를 이용하여 `go.mod`파일을 만들어야한다.  
-이용할 때는 폴더에 go파일까지 경로가 닿도록 `import`할 것!
+이후 해당 모듈 폴더에서 `go mod init [모듈경로; github.com/oiuyy207/learn-Go/01-25/myModule]`를 이용하여 `go.mod`파일을 만들어야한다.  
+(추가사항) 해당모델은 로컬에서만 만들고, 배포를 아직 하지 않은 상태이기 때문에 추가작업이 필요하다.  
+
+1. 로컬패키지 참조하도록 변경('go.mod' 안에 작성됨)
+```
+go mod edit -replace github.com/oiuyy207/learn-Go/01-25/myModule=../myModule
+```
+2. 패키지 설정
+```
+go mod tidy
+```
+
